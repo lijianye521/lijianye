@@ -1,23 +1,37 @@
-/**
- * button.js | https://theme-next.js.org/docs/tag-plugins/button
- */
+'use strict'
 
-'use strict';
+function button (args, content) {
+  args = args.join(' ').split(',')
 
-module.exports = ctx => function(args) {
-  args = args.join(' ').split(',');
-  const url   = args[0];
-  const text  = (args[1] || '').trim();
-  let icon    = (args[2] || '').trim();
-  const title = (args[3] || '').trim();
+  const url = args[0]
+  let icon = (args[1] || '').trim()
+  let title = (args[2] || '').trim()
+  let cnt = (content || '').trim()
+  const isIconOnly = icon && !cnt
 
   if (!url) {
-    ctx.log.warn('URL can NOT be empty.');
+    hexo.log.warn('URL can NOT be empty.')
   }
   if (icon.length > 0) {
-    if (!icon.startsWith('fa')) icon = 'fa fa-' + icon;
-    icon = `<i class="${icon}"></i>`;
+    if (!icon.startsWith('fas')) {
+      icon = 'fas fa-' + icon
+    }
+
+    icon = `<span class="button-plugin__icon"><i class="${icon}"></i></span>`
+  }
+  if (title.length > 0) {
+    title = ` title="${title}"`
+  }
+  if (cnt.length > 0) {
+    cnt = `<span class="button-plugin__content">${content}</span>`
   }
 
-  return `<a class="btn" href="${url}"${title.length > 0 ? ` title="${title}"` : ''}>${icon}${text}</a>`;
-};
+  return `<a class="button-plugin${
+    isIconOnly ? ' button-plugin--icon-only' : ''
+  }" href="${url}"${title}>${icon}${cnt}</a>`
+}
+
+hexo.extend.tag.register('button', button, {
+  ends: true,
+  async: true
+})

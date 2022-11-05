@@ -1,45 +1,60 @@
 {
-  "name": "hexo-theme-next",
-  "version": "8.13.2",
-  "description": "Elegant and powerful theme for Hexo.",
-  "main": "package.json",
-  "files": [
-    "docs",
-    "languages",
-    "layout",
-    "scripts",
-    "source",
-    "_config.yml",
-    "_vendors.yml"
-  ],
+  "name": "hexo-theme-stun",
+  "version": "2.7.0",
+  "description": "A beautiful & simple theme for Hexo",
+  "homepage": "https://liuyib.github.io",
   "scripts": {
-    "eslint": "eslint scripts/ source/js test/",
-    "prepare": "node .githooks/install.js",
-    "stylint": "stylint source/css/",
-    "test": "mocha test/index.js",
-    "test-cov": "c8 npm test"
+    "commit": "git cz",
+    "release": "standard-version",
+    "release:lts": "npm run release -- --release-as",
+    "release:pre": "npm run release -- --prerelease",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
-  "repository": "next-theme/hexo-theme-next",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liuyib/hexo-theme-stun"
+  },
   "keywords": [
-    "hexo",
-    "theme",
-    "next"
+    "Stun",
+    "Hexo"
   ],
-  "author": "NexT (https://theme-next.js.org)",
-  "license": "AGPL-3.0-or-later",
+  "author": "liuyib",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/next-theme/hexo-theme-next/issues"
+    "url": "https://github.com/liuyib/hexo-theme-stun/issues"
   },
-  "homepage": "https://theme-next.js.org",
   "devDependencies": {
-    "@next-theme/eslint-config": "0.0.3",
-    "c8": "7.12.0",
-    "chai": "4.3.6",
-    "eslint": "8.26.0",
-    "hexo": "6.3.0",
-    "hexo-renderer-marked": "6.0.0",
-    "js-yaml": "4.1.0",
-    "mocha": "10.1.0",
-    "stylint": "2.0.0"
+    "@commitlint/cli": "^11.0.0",
+    "commitizen": "^4.2.2",
+    "commitlint-config-cz": "^0.13.2",
+    "cz-customizable": "^6.3.0",
+    "eslint": "^7.17.0",
+    "husky": "^4.3.6",
+    "standard": "^14.3.4",
+    "standard-version": "^9.1.0"
+  },
+  "standard": {
+    "globals": [
+      "$",
+      "CONFIG",
+      "hexo",
+      "Stun",
+      "instantsearch"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    }
   }
 }

@@ -1,113 +1,115 @@
-name: English
-
+# Site title
 title:
+  home: Home
   archive: Archive
   category: Category
   tag: Tag
-  schedule: Schedule
 
+# Header nav
+nav:
+  search: Search
+
+# Header menu
 menu:
   home: Home
   archives: Archives
   categories: Categories
   tags: Tags
   about: About
-  search: Search
-  schedule: Schedule
-  sitemap: Sitemap
-  commonweal: Commonweal 404
 
+# Archives page, Categories page, Tags page
+page:
+  tags: Tags
+  categories: Categories
+  posts-empty: No articles
+  posts-total: Total %s Articles, Go on!
+
+# Sidebar
 sidebar:
   overview: Overview
-  toc: Table of Contents
+  catalog: Catalog
+  subscribe: Subscribe
+  archives: Archives
+  categories: Categories
+  tags: Tags
+  read_info: You have read
 
+# Social link
+social:
+  github: Github
+  google: Google
+  twitter: Twitter
+  youtube: Youtube
+  segmentfault: Segmentfault
+  zhihu: Zhihu
+  weibo: Weibo
+  wechat: Wechat
+  telegram: Telegram
+  qq: QQ
+
+# Article
 post:
-  posted: Posted on
-  edited: Edited on
   created: Created
-  modified: Modified
-  edit: Edit this post
-  in: In
-  read_more: Read more
-  untitled: Untitled
+  updated: Updated
+  word_count: Words
+  reading_count: Visited
+  reading_time: Reading
+  reading_unit: m
+  read_more: Read More
   sticky: Sticky
-  views: Views
-  related_posts: Related Posts
+  untitled: "[ Untitled ]"
+  end: ------ END ------
   copyright:
-    author: Post author
-    link: Post link
-    post_author: Written by
-    post_link: This article originally appeared on
-    license_title: Copyright Notice
-    license_content: "All articles in this blog are licensed under %s unless stating additionally."
+    author: Author
+    link: Link
+    license_title: Copyright
+    license_content: All articles in this blog are licensed under <a href="%s" rel="external nofollow" target="_blank">%s</a> unless stating additionally
 
-footer:
-  powered: "Powered by %s"
-  total_views: Total Views
-  total_visitors: Total Visitors
+# Algolia search
+algolia_search:
+  input_placeholder: Search for Posts
+  hits_empty: "We didn't find any results for the search: ${query}"
+  hits_stats: '${hits} results found in ${time} ms'
 
-counter:
-  tag_cloud:
-    zero: No tags
-    one: 1 tag in total
-    other: "%d tags in total"
+# Local search
+local_search:
+  input_placeholder: Search for Posts (Support multiple keywords)
+  hits_empty: We didn't find any results for the search
 
-  categories:
-    zero: No categories
-    one: 1 category in total
-    other: "%d categories in total"
+# Auxiliary search buttons
+assist_search:
+  prompt_label: "Search by:"
+  prompt_input: Please enter characters
+  google: Google
+  bing: Bing
+  baidu: Baidu
 
-  archive_posts:
-    zero: No posts.
-    one: 1 post.
-    other: "%d posts in total."
-
-state:
-  posts: posts
-  tags: tags
-  categories: categories
-
-search:
-  placeholder: Searching...
-  empty: "We didn't find any results for the search: %s"
-  hits_time: "%s results found in %s ms"
-  hits: "%s results found"
-
-cheers:
-  um: Um..
-  ok: OK
-  nice: Nice
-  good: Good
-  great: Great
-  excellent: Excellent
-
-keep_on: Keep on posting.
-
-symbol:
-  comma: ", "
-  period: ". "
-  colon: ": "
-
+# Reward
 reward:
-  donate: Donate
-  wechatpay: WeChat Pay
+  btn_text: Buy me a coffee
   alipay: Alipay
-  paypal: PayPal
-  bitcoin: Bitcoin
+  wechat: Wechat
 
-follow_me:
-  welcome: Welcome to my other publishing channels
+# Site footer
+footer:
+  powered: Powered by %s
+  theme: Theme
+  site_uv: Visitors
+  site_pv: Views
 
-accessibility:
-  nav_toggle: Toggle navigation bar
-  prev_page: Previous page
-  next_page: Next page
-  back_to_top: Back to top
-  select_lang: Select language
+# Prompt message
+prompt:
+  copy_success: Copy Success
+  copy_error: Copy Error
 
-symbols_count_time:
-  count: Symbols count in article
-  count_total: Symbols count total
-  time: Reading time
-  time_total: Reading time total
-  time_minutes: mins.
+popover:
+  copy_button: Copy
+  creative_commons: Creative Commons
+  post:
+    create_time: Created Time
+    update_time: Updated Time
+    word_count: Words Count
+    reading_time: Reading Time
+    visit_num: Visitors
+  site_uv: Unique Visitor
+  site_pv: Page View

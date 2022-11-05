@@ -1,25 +1,40 @@
-/**
- * note.js | https://theme-next.js.org/docs/tag-plugins/note
- */
+'use strict'
 
-'use strict';
+function note (args, content) {
+  var theme = hexo.theme.config
+  var icon = theme.icon && theme.icon.notetag_default
+  var iconType = 'default'
+  var isIcon = true
 
-module.exports = ctx => function(args, content) {
-  const keywords = ['default', 'primary', 'info', 'success', 'warning', 'danger', 'no-icon'];
-  const className = [];
-  for (let i = 0; i < 2; i++) {
-    if (keywords.includes(args[0])) {
-      className.push(args.shift());
-    } else {
-      break;
-    }
+  if (args.includes('no-icon')) {
+    isIcon = false
+  }
+  if (isIcon && theme.icon) {
+    var tagTypes = ['default', 'success', 'info', 'warning', 'danger']
+    tagTypes.forEach(type => {
+      if (args.includes(type)) {
+        icon = theme.icon[`notetag_${type}`]
+        iconType = type
+      }
+    })
   }
 
-  content = ctx.render.renderSync({ text: content, engine: 'markdown' });
-  if (args.length === 0) {
-    return `<div class="note ${className.join(' ')}">${content}</div>`;
-  }
-  return `<details class="note ${className.join(' ')}"><summary>${ctx.render.renderSync({ text: args.join(' '), engine: 'markdown' })}</summary>
-${content}
-</details>`;
-};
+  var className = args.join(' ')
+  return `
+    <div class="note-plugin ${className}">
+      ${
+        isIcon
+          ? `<span class="note-plugin__icon note-plugin__icon--${iconType}">
+              <i class="${icon}"></i>
+            </span>`
+          : ''
+      }
+      ${hexo.render
+        .renderSync({ text: content, engine: 'markdown' })
+        .split('\n')
+        .join('')}
+    </div>
+  `
+}
+
+hexo.extend.tag.register('note', note, { ends: true })
